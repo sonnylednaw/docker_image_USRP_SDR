@@ -1,0 +1,19 @@
+Launch the Docker file:
+- docker build -t my-jupyter-image .
+- docker run -p 8888:8888 -v $(pwd)/notebooks:/notebooks my-jupyter-image
+- (docker run -p 8888:8888 -it [Container-ID])
+
+## Falls die Bibliothek uhd nicht gefunden wird:
+
+- überprüfen, ob im container die Bibliothek
+
+    /usr/local/lib/python3.10/site-packages/uhd
+
+    vorhanden ist
+
+- wenn ja, aber der import trotzdem fehlschlägt, dann in Python wie folgt hinzufügen
+
+    import sys
+    sys.path.insert(0, '/usr/local/lib/python3.10/site-packages')
+
+    import uhd
